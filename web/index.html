@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HL7 開單</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+
+    <h1 class="mb-4">HL7開單
+    </h1>
+
+    <div class="mb-3">
+        <label class="form-label">病人 ID：</label>
+        <input type="text" id="patientId" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">病人姓名：</label>
+        <input type="text" id="patientName" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">病人生日：</label>
+        <input type="date" id="patientBarth" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">標本 ID：</label>
+        <input type="text" id="specimenId" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">標本名稱：</label>
+        <input type="text" id="specimenName" class="form-control">
+    </div>
+    <h3>檢查項目</h3>
+    <div id="testList">
+        <div class="mb-2">
+            <input type="text" class="form-control test-input" placeholder="輸入檢查項目">
+            <input type="text" class="form-control test-input-resault" placeholder="輸入檢查結果">
+        </div>
+    </div>
+    <button id="addTest" class="btn btn-secondary my-2">新增檢查</button>
+
+    <button id="sendHL7" class="btn btn-primary">發送 HL7 訊息</button>
+
+    <pre id="result" class="mt-4 p-3 bg-light border"></pre>
+    <script type="text/javascript" src="/script.js"></script>
+</body>
+</html>
