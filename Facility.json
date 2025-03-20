@@ -1,4 +1,4 @@
 {
-    "serverHost": "localhost",
-    "serverPort": "8000"
+    "serverHost": "10.199.1.144",
+    "serverPort": "8080"
 }

@@ -50,10 +50,10 @@ document.getElementById("sendHL7").addEventListener("click", async function() {
         console.log(res);
     })
     document.getElementById("result").innerText = "與伺服器通訊中，請稍後...";
-    const response = await fetch("http://localhost:3000/sendHL7", {
+    const response = await fetch("http://10.99.1.144:8080/hL7", {
         method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({hl7})
+        headers: { "Content-Type": "application/hl7-v2" },
+        body: JSON.stringify("test")
     });
     const data = await response.text();
     document.getElementById("result").innerText = data;
