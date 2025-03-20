@@ -36,10 +36,10 @@ document.getElementById("sendHL7").addEventListener("click", async function() {
             testsResaults.push({ name: input.value.trim() });
         }
     });
-    hl7 = [`MSH|^~\\&|${Facillty.Application}|${Facillty.Facillty}|||${getHL7Timestamp()}||ORM^O01|12345|T|2.5`,
-           `PID|1|${patientID}|${patientID}||${patientName}||${patientbirth}|M`,
+    hl7 = [`MSH|^~\\&|ORDERSYSTEM|NTUNHS|||${getHL7Timestamp()}||ORM^O01|12345|T|2.5`,
+           `PID|1|${patientId}|${patientId}||${patientName}||${patientBarth}|M`,
            `ORC|NW|ORDER|RIS123|SC||1||${getHL7Timestamp()}|||`,
-            `SPM|1|specimenId|SPECIMEN_PARENT|||SER|specimenName||||getHL7Timestamp()`]
+            `SPM|1|${specimenId}|SPECIMEN_PARENT|||SER|${specimenName}||||getHL7Timestamp()`]
     testInputs.forEach((test, index) => {
             hl7.push(`OBR|${index + 1}|ORDER${12345 + index}|RIS${123 + index}|${test.name}^檢查項目`);
     });
@@ -50,8 +50,11 @@ document.getElementById("sendHL7").addEventListener("click", async function() {
         console.log(res);
     })
     document.getElementById("result").innerText = "與伺服器通訊中，請稍後...";
-    
-
+    const response = await fetch("http://localhost:3000/sendHL7", {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({hl7})
+    });
     const data = await response.text();
     document.getElementById("result").innerText = data;
 });

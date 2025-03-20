@@ -31,11 +31,10 @@ return msg;
 app.post("/sendHL7", function (req, res) {
   console.log(req.body)
   var client = hl7.Server.createTcpClient(Facillty.serverHost,Facillty.serverPort);
-  var msg = createORMMessage(req.body.patientName, req.body.patientId,req.body.patientBarth,req.body.specimenId,req.body.specimenName,req.body.tests,req.body.testsResaults);
+  var msg = new hl7.Message(req.body.hl7)
   console.log("msg:"+ msg)
   client.send(msg, (err, ack) => {
     if (err){
-
       res.send("HL7 開單失敗: " + err.message);
   }else{
       console.log("HL7 開單成功:", ack.toString());
