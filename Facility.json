@@ -1,6 +1,4 @@
 {
-    "Application": "ORDER SYSTEM",
-    "Facillty": "FACILLTY",
     "serverHost": "localhost",
     "serverPort": "8000"
 }

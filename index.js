@@ -1,4 +1,4 @@
-var express = require("express");
+  var express = require("express");
 var bodyParser = require('body-parser')
 var app = express();
 const cors = require("cors");
@@ -13,10 +13,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ // 解析表單內容
   extended: false,
 }));
-function getHL7Timestamp() {
-  const now = new Date();
-  return now.toISOString().replace(/[-:T.Z]/g, '').slice(0, 14);
-}
 function createORMMessage(patientName, patientID,patientbirth,specimenId,specimenName,test,resault) {
   const msg =  new hl7.Message(
     `MSH|^~\\&|${Facillty.Application}|${Facillty.Facillty}|||${getHL7Timestamp()}||ORM^O01|12345|T|2.5`,
